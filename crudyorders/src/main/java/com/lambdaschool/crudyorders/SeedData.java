@@ -6,6 +6,10 @@ import com.lambdaschool.crudyorders.models.Agent;
 import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.models.Order;
 import com.lambdaschool.crudyorders.models.Payment;
+import com.lambdaschool.crudyorders.repositories.AgentRepository;
+import com.lambdaschool.crudyorders.repositories.CustomerRepository;
+import com.lambdaschool.crudyorders.repositories.OrderRepository;
+import com.lambdaschool.crudyorders.repositories.PaymentRepository;
 import com.lambdaschool.crudyorders.services.AgentService;
 import com.lambdaschool.crudyorders.services.CustomerService;
 import com.lambdaschool.crudyorders.services.OrderService;
@@ -24,25 +28,25 @@ public class SeedData implements CommandLineRunner
      * Connects the customer table to this SeedData method
      */
     @Autowired
-    private CustomerService customerService;
+    private CustomerRepository customerRepository;
 
     /**
      * Connects the agents table to this SeedData method
      */
     @Autowired
-    private AgentService agentService;
+    private AgentRepository agentRepository;
 
     /**
      * Connects the orders table to this SeedData method
      */
     @Autowired
-    private OrderService orderService;
+    private OrderRepository orderRepository;
 
     /**
      * Connects the payment table to this SeedData method
      */
     @Autowired
-    private PaymentService paymentService;
+    private PaymentRepository paymentRepository;
 
     /**
      * Generates test, seed data for our application
@@ -62,10 +66,10 @@ public class SeedData implements CommandLineRunner
         Payment pay3 = new Payment("Credit Card");
         Payment pay4 = new Payment("Mobile Pay");
 
-        pay1 = paymentService.save(pay1);
-        pay2 = paymentService.save(pay2);
-        pay3 = paymentService.save(pay3);
-        pay4 = paymentService.save(pay4);
+        pay1 = paymentRepository.save(pay1);
+        pay2 = paymentRepository.save(pay2);
+        pay3 = paymentRepository.save(pay3);
+        pay4 = paymentRepository.save(pay4);
 
         Agent a01 = new Agent("Ramasundar",
             "Bangalore",
@@ -457,56 +461,56 @@ public class SeedData implements CommandLineRunner
             0.00, "SOD", c25);
         o12.getPayments().add(pay1);
 
-        agentService.save(a01);
-        agentService.save(a02);
-        agentService.save(a03);
-        agentService.save(a04);
-        agentService.save(a05);
-        agentService.save(a06);
-        agentService.save(a07);
-        agentService.save(a08);
-        agentService.save(a09);
-        agentService.save(a10);
-        agentService.save(a11);
-        agentService.save(a12);
+        agentRepository.save(a01);
+        agentRepository.save(a02);
+        agentRepository.save(a03);
+        agentRepository.save(a04);
+        agentRepository.save(a05);
+        agentRepository.save(a06);
+        agentRepository.save(a07);
+        agentRepository.save(a08);
+        agentRepository.save(a09);
+        agentRepository.save(a10);
+        agentRepository.save(a11);
+        agentRepository.save(a12);
 
-        customerService.save(c01);
-        customerService.save(c02);
-        customerService.save(c03);
-        customerService.save(c04);
-        customerService.save(c05);
-        customerService.save(c06);
-        customerService.save(c07);
-        customerService.save(c08);
-        customerService.save(c09);
-        customerService.save(c10);
-        customerService.save(c11);
-        customerService.save(c12);
-        customerService.save(c13);
-        customerService.save(c14);
-        customerService.save(c15);
-        customerService.save(c16);
-        customerService.save(c17);
-        customerService.save(c18);
-        customerService.save(c19);
-        customerService.save(c20);
-        customerService.save(c21);
-        customerService.save(c22);
-        customerService.save(c23);
-        customerService.save(c24);
-        customerService.save(c25);
+        customerRepository.save(c01);
+        customerRepository.save(c02);
+        customerRepository.save(c03);
+        customerRepository.save(c04);
+        customerRepository.save(c05);
+        customerRepository.save(c06);
+        customerRepository.save(c07);
+        customerRepository.save(c08);
+        customerRepository.save(c09);
+        customerRepository.save(c10);
+        customerRepository.save(c11);
+        customerRepository.save(c12);
+        customerRepository.save(c13);
+        customerRepository.save(c14);
+        customerRepository.save(c15);
+        customerRepository.save(c16);
+        customerRepository.save(c17);
+        customerRepository.save(c18);
+        customerRepository.save(c19);
+        customerRepository.save(c20);
+        customerRepository.save(c21);
+        customerRepository.save(c22);
+        customerRepository.save(c23);
+        customerRepository.save(c24);
+        customerRepository.save(c25);
 
-        orderService.save(o01);
-        orderService.save(o02);
-        orderService.save(o03);
-        orderService.save(o04);
-        orderService.save(o05);
-        orderService.save(o06);
-        orderService.save(o07);
-        orderService.save(o08);
-        orderService.save(o09);
-        orderService.save(o10);
-        orderService.save(o11);
-        orderService.save(o12);
+        orderRepository.save(o01);
+        orderRepository.save(o02);
+        orderRepository.save(o03);
+        orderRepository.save(o04);
+        orderRepository.save(o05);
+        orderRepository.save(o06);
+        orderRepository.save(o07);
+        orderRepository.save(o08);
+        orderRepository.save(o09);
+        orderRepository.save(o10);
+        orderRepository.save(o11);
+        orderRepository.save(o12);
     }
 }

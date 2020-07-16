@@ -17,4 +17,8 @@ public interface CustomerService {
 
     List<CustCountOrders> getCustCountOrders();
 
+    Customer update(Customer customer, long custcode);
+
+    void delete(long custcode);
+
 }

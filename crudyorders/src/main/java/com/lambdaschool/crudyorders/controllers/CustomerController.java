@@ -4,13 +4,14 @@ import com.lambdaschool.crudyorders.models.Customer;
 import com.lambdaschool.crudyorders.services.CustomerService;
 import com.lambdaschool.crudyorders.views.CustCountOrders;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -51,5 +52,50 @@ public class CustomerController {
 
         return new ResponseEntity<>(myList, HttpStatus.OK);
     }
+
+    // POST http://localhost:2019/customers/customer
+    @PostMapping(value = "/customer", consumes = {"application/json"})
+    public ResponseEntity<?> addNewCustomer(@Valid @RequestBody Customer newCustomer) {
+        newCustomer.setCustcode(0);
+        newCustomer = customerService.save(newCustomer);
+
+        HttpHeaders responseHeaders = new HttpHeaders();
+        URI newCustomerURI = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{custcode}")
+                .buildAndExpand(newCustomer.getCustcode())
+                .toUri();
+        responseHeaders.setLocation(newCustomerURI);
+
+        return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
+    }
+
+    // PUT http://localhost:2019/customers/customer/{custcode}
+    @PutMapping(value = "/customer/{custcode}", consumes = {"application/json"})
+    public ResponseEntity<?> replaceCustomer(@Valid @RequestBody Customer replaceCustomer,
+                                             @PathVariable long custcode) {
+        replaceCustomer.setCustcode(custcode);
+        customerService.save(replaceCustomer);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // PATCH http://localhost:2019/customers/customer/{custcode}
+    @PatchMapping(value = "/customer/{custcode}", consumes = {"application/json"})
+    public ResponseEntity<?> updateCustomer(@Valid @RequestBody Customer updateCustomer,
+                                            @PathVariable long custcode) {
+        updateCustomer.setCustcode(custcode);
+        customerService.update(updateCustomer, custcode);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    // DELETE http://localhost:2019/customers/customer/{custcode}
+    @DeleteMapping(value = "/customer/{custcode}", produces = {"application/json"})
+    public ResponseEntity<?> deleteCustomer(@PathVariable long custcode) {
+        customerService.delete(custcode);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 
 }

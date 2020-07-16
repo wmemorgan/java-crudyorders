@@ -81,14 +81,14 @@ Using the provided seed data, a successful application will return the follow da
 
 Expose the following endpoints
 
-* [ ]  POST /customers/customer - Adds a new customer including any new orders
-* [ ]  PUT /customers/customer/{custcode} - completely replaces the customer record including associated orders with the provided data
-* [ ]  PATCH /customers/customer/{custcode} - updates customers with the new data. Only the new data is to be sent from the frontend client.
-* [ ]  DELETE /customers/customer/{custcode} - Deletes the given customer including any associated orders
+* [x]  POST /customers/customer - Adds a new customer including any new orders
+* [x]  PUT /customers/customer/{custcode} - completely replaces the customer record including associated orders with the provided data
+* [x]  PATCH /customers/customer/{custcode} - updates customers with the new data. Only the new data is to be sent from the frontend client.
+* [x]  DELETE /customers/customer/{custcode} - Deletes the given customer including any associated orders
 
-* [ ]  POST /orders/order - adds a new order to an existing customer
-* [ ]  PUT /orders/order/{ordernum} - completely replaces the given order record
-* [ ]  DELETE /orders/order/{ordername} - deletes the given order
+* [x]  POST /orders/order - adds a new order to an existing customer
+* [x]  PUT /orders/order/{ordernum} - completely replaces the given order record
+* [x]  DELETE /orders/order/{ordername} - deletes the given order
 
 ### Stretch Goal
 

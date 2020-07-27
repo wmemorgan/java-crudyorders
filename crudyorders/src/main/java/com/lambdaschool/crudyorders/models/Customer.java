@@ -25,21 +25,28 @@ public class Customer {
     private String custcountry;
 
     private String grade;
-
+    @JsonIgnore
     @Transient
     public boolean hasvalueforopeningamt = false;
+
     private double openingamt;
 
+    @JsonIgnore
     @Transient
     public boolean hasvalueforreceiveamt = false;
+
     private double receiveamt;
 
+    @JsonIgnore
     @Transient
     public boolean hasvalueforpaymentamt = false;
+
     private double paymentamt;
 
+    @JsonIgnore
     @Transient
     public boolean hasvalueforoutstandingamt = false;
+
     private double outstandingamt;
 
     private String phone;
